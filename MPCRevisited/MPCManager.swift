@@ -31,7 +31,7 @@ class MPCManager: NSObject {
     override init() {
         super.init()
         
-        peer = getPeer()
+        peer = MCPeerID(displayName: UIDevice.current.name)
         
         session = MCSession(peer: peer)
         session.delegate = self
@@ -41,6 +41,19 @@ class MPCManager: NSObject {
         
         advertiser = MCNearbyServiceAdvertiser(peer: peer, discoveryInfo: nil, serviceType: Constants.serviceType)
         advertiser.delegate = self
+    }
+    
+    func sendData(dictionaryWithData dictionary: Dictionary<String, String>, toPeer targetPeer: MCPeerID) -> Bool {
+        let dataToSend = NSKeyedArchiver.archivedData(withRootObject: dictionary)
+        let peersArray = [targetPeer]
+        
+        do {
+            try session.send(dataToSend, toPeers: peersArray, with: .reliable)
+            return true
+        } catch {
+            print(error.localizedDescription)
+            return false
+        }
     }
     
     func getPeer() -> MCPeerID {
@@ -61,19 +74,6 @@ class MPCManager: NSObject {
         }
         
         return peerID
-    }
-    
-    func sendData(dictionaryWithData dictionary: Dictionary<String, String>, toPeer targetPeer: MCPeerID) -> Bool {
-        let dataToSend = NSKeyedArchiver.archivedData(withRootObject: dictionary)
-        let peersArray = [targetPeer]
-        
-        do {
-            try session.send(dataToSend, toPeers: peersArray, with: .reliable)
-            return true
-        } catch {
-            print(error.localizedDescription)
-            return false
-        }
     }
 }
 
@@ -124,25 +124,16 @@ extension MPCManager: MCSessionDelegate {
 extension MPCManager: MCNearbyServiceBrowserDelegate {
     // Found a nearby advertising peer.
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
-        print("doowop \(peerID)")
-        print("doowop \(foundPeers)")
-        print("Found peer")
-        if findPeer(peerID) == nil {
-            print("new peer!")
-            foundPeers.append(peerID)
-            delegate?.foundPeer()
-        }
+        
+        foundPeers.append(peerID)
+        delegate?.foundPeer()
     }
     
     
     // A nearby peer has stopped advertising.
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
-        print("Lost peer!")
-        if let index = findPeer(peerID) {
-            print("removing peer")
-            foundPeers.remove(at: index)
-        }
         
+        removePeer(peerID)
         delegate?.lostPeer()
     }
     
@@ -152,14 +143,13 @@ extension MPCManager: MCNearbyServiceBrowserDelegate {
         print(error.localizedDescription)
     }
     
-    private func findPeer(_ peerID: MCPeerID) -> Int? {
+    private func removePeer(_ peerID: MCPeerID) {
         for (index, aPeer) in foundPeers.enumerated() {
             if aPeer == peerID {
-                return index
+                foundPeers.remove(at: index)
+                break
             }
         }
-        
-        return nil
     }
 }
 
