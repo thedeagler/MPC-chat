@@ -13,6 +13,9 @@
 		C04365661A626BA0000E0F15 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C04365651A626BA0000E0F15 /* Images.xcassets */; };
 		C04365691A626BA0000E0F15 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C04365671A626BA0000E0F15 /* LaunchScreen.xib */; };
 		C04365751A626BA1000E0F15 /* MPCRevisitedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04365741A626BA1000E0F15 /* MPCRevisitedTests.swift */; };
+		C04365811A626D11000E0F15 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04365801A626D11000E0F15 /* ChatViewController.swift */; };
+		DC56ADBD1E5F9DA600D58FC0 /* MPCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC56ADBC1E5F9DA600D58FC0 /* MPCManager.swift */; };
+		DC56ADBF1E5FA2BE00D58FC0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC56ADBE1E5FA2BE00D58FC0 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 		C043656E1A626BA1000E0F15 /* MPCRevisitedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MPCRevisitedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C04365731A626BA1000E0F15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C04365741A626BA1000E0F15 /* MPCRevisitedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCRevisitedTests.swift; sourceTree = "<group>"; };
+		C04365801A626D11000E0F15 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		DC56ADBC1E5F9DA600D58FC0 /* MPCManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPCManager.swift; sourceTree = "<group>"; };
+		DC56ADBE1E5FA2BE00D58FC0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,9 @@
 			children = (
 				C043655E1A626BA0000E0F15 /* AppDelegate.swift */,
 				C04365601A626BA0000E0F15 /* ViewController.swift */,
+				DC56ADBC1E5F9DA600D58FC0 /* MPCManager.swift */,
+				DC56ADBE1E5FA2BE00D58FC0 /* Constants.swift */,
+				C04365801A626D11000E0F15 /* ChatViewController.swift */,
 				C04365621A626BA0000E0F15 /* Main.storyboard */,
 				C04365651A626BA0000E0F15 /* Images.xcassets */,
 				C04365671A626BA0000E0F15 /* LaunchScreen.xib */,
@@ -161,9 +170,13 @@
 				TargetAttributes = {
 					C04365581A626BA0000E0F15 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = E4W8JP9HX2;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
 					};
 					C043656D1A626BA1000E0F15 = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 0820;
 						TestTargetID = C04365581A626BA0000E0F15;
 					};
 				};
@@ -212,7 +225,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC56ADBF1E5FA2BE00D58FC0 /* Constants.swift in Sources */,
 				C04365611A626BA0000E0F15 /* ViewController.swift in Sources */,
+				C04365811A626D11000E0F15 /* ChatViewController.swift in Sources */,
+				DC56ADBD1E5F9DA600D58FC0 /* MPCManager.swift in Sources */,
 				C043655F1A626BA0000E0F15 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,9 +352,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = E4W8JP9HX2;
 				INFOPLIST_FILE = MPCRevisited/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.marcopolo.MPCchat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -346,9 +369,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = E4W8JP9HX2;
 				INFOPLIST_FILE = MPCRevisited/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.marcopolo.MPCchat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -367,6 +397,7 @@
 				INFOPLIST_FILE = MPCRevisitedTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MPCRevisited.app/MPCRevisited";
 			};
 			name = Debug;
@@ -382,6 +413,7 @@
 				INFOPLIST_FILE = MPCRevisitedTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MPCRevisited.app/MPCRevisited";
 			};
 			name = Release;
@@ -396,7 +428,7 @@
 				C04365771A626BA1000E0F15 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		C04365781A626BA1000E0F15 /* Build configuration list for PBXNativeTarget "MPCRevisited" */ = {
 			isa = XCConfigurationList;
@@ -405,6 +437,7 @@
 				C043657A1A626BA1000E0F15 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 		C043657B1A626BA1000E0F15 /* Build configuration list for PBXNativeTarget "MPCRevisitedTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +446,7 @@
 				C043657D1A626BA1000E0F15 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
